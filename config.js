@@ -2,8 +2,8 @@ const config = {
     // 你想要打多少张，这里就设置多少
     repeatCount: 40,
 
-	// gas限制 20000000000 约1.1u
-	maxGasPrice: 30000000000,
+	// gas限制 20*1000000000 约1.1u
+	maxGasPrice: 30*1000000000,
 	
     // 在当前的 gas 基础上增加多少倍，**建议1.1以上，防止gas过低无法确认导致交易作废
     increaseGas: 1.1,
