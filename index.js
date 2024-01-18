@@ -109,6 +109,7 @@ async function run(){
 	let txCount = 0;
 	const checkTime = config.checkTime *60 *1000; //挖矿时间查询间隔(ms)
 	const sleepTime = config.sleepTime*1000 //每次挖矿间隔(ms)
+	const gasCheckTime = config.gasCheckTime*1000*60 //每次挖矿间隔(ms)
 	
 	while(true){
 		let currentTime = new Date();
@@ -125,8 +126,8 @@ async function run(){
 			// 获取实时 gasPrice
 			const currentGasPrice = await getGasPrice();
 			if(currentGasPrice > config.maxGasPrice){
-				console.log("====== gas 太高，等待降低 ..... ======")
-				await sleep(config.gasCheckTime);	
+				console.log(`====== gas 太高，等待降低，查询间隔${config.gasCheckTime} 分钟======`);
+				await sleep(gasCheckTime);	
 				continue;
 			}
 			console.log(`====== gas 合适，开始挖币，挖币间隔${config.checkTime}秒！======`)
